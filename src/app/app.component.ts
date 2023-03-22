@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component,Input } from '@angular/core';
+import { ProductlistService } from './productlist.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ProdctForm';
+  @Input() show!: boolean;
+  modalOpen = false;
+
+  openModal(): void {
+    this.modalOpen = true;
+  }
+
+  closeModal(): void {
+    alert('close modal')
+    this.modalOpen = false;
+  }
+  
+  
 }

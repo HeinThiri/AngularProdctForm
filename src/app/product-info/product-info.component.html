@@ -1,0 +1,53 @@
+
+<div class="col-lg-3">
+  <input class="form-control mr-2" type="search" placeholder="Search for product.." aria-label="Search" [(ngModel)]="searchTerm" id="search">
+</div><div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">No</th>
+        <th scope ="col">Product Name</th>
+        <th scope ="col">QTY</th>
+        <th scope="col" class="priceForm">Price</th>
+        <th scope="col">TotalPrice</th>
+        <th scope ="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let s of list | reverse |filter: searchTerm;let i = index;">
+          <td>
+            {{i+1}}
+          </td>
+            <td>
+                {{s.pname}}
+            </td>
+            <td>
+                {{s.qty}}
+            </td>
+            <td>
+                {{s.price}}
+            </td>
+            <td>
+              {{s.price * s.qty}}
+            </td>
+
+          <td>
+
+                <button type="button" class="btn btn-sm btn-danger" (click)="delete(s)">
+                  <img src="assets/images/delpng.png"width="16px">
+              </button>
+              <button [routerLink]= "[ '/edit', s.id ]"type="button" class="btn btn-sm btn-primary">
+                <img src="assets/images/edit.png" width="16px">
+              </button>
+              </td>
+           </tr>
+            <!-- <tr>
+            <td class="total"> Total : {{getTotal()}}</td>
+        </tr> -->
+    </tbody>
+  </table>
+  <div class="total"> Total : {{getTotal()}}</div>
+  </div>
+  
+  
+  
